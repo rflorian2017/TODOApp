@@ -1,6 +1,7 @@
 package com.rosu.repository;
 
 import com.rosu.model.User;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -13,6 +14,7 @@ public class UserRepository implements CrudRepository<User, Integer> {
     }
 
     public List<User> findAll() {
+        //TODO: add implementation
         return null;
     }
 
@@ -32,8 +34,21 @@ public class UserRepository implements CrudRepository<User, Integer> {
     }
 
     public User findById(Integer id) {
-        // TODO: Add try catch
-        User user = entityManager.find(User.class, id);
-        return user;
+        //COMPLETED : Add Try catch
+        try {
+            User user = entityManager.find(User.class, id);
+            return user;
+        } catch (Exception e) {
+            System.out.println("Something went wrong...");
+        }
+        return null;
+    }
+
+    public User findByUsername(String username) {
+       User user =  (User) entityManager.createQuery("SELECT * FROM User u WHERE u.username = :username")
+                .setParameter("username", username)
+                .getResultList().get(0);
+       return user;
     }
 }
+

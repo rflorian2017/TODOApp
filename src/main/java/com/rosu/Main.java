@@ -16,7 +16,7 @@ public class Main extends Application {
         InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("sample.fxml");
         Parent root = fxmlLoader.load(resourceAsStream);
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }
 

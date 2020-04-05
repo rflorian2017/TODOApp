@@ -2,6 +2,7 @@ package com.rosu.model;
 
 import javax.persistence.*;
 
+//TODO: One to **** relationship to task. See virtual store implementation
 @Entity
 @Table (name = "user") // redundant, because table will be named implicitly user
 public class User {
